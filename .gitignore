@@ -1,0 +1,28 @@
+#告诉 git以下文件不进行版本管理，push的时候不会上传
+#/mtk/ 过滤整个文件夹
+#*.zip 过滤所有.zip文件
+#/mtk/do.c 过滤某个具体文件
+#
+
+.DS_Store
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

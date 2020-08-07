@@ -1,0 +1,72 @@
+/** 清除内外边距 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+th, td /* table elements 表格元素 */ {
+  margin: 0; padding: 0; vertical-align:baseline;  }
+/* 设置box-sizing */
+div{ box-sizing: border-box;}
+/** 设置默认字体 **/
+/* element-ui字体 */
+body,html{font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;}
+body,
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
+small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+
+/** 重置列表元素 **/
+ul, ol { list-style: none; }
+
+/** 重置文本格式元素 **/
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+/** 重置表单元素 **/
+legend { color: #000; } /* for ie6 */
+fieldset, img { border: 0; } /* img 搭车：让链接里的 img 无边框 */
+button, input, select, textarea { font-size: 100%; } /* 使得表单元素在 ie 下能继承字体大小 */
+/* 注：optgroup 无法扶正 */
+
+/** 重置表格元素 **/
+table { border-collapse: collapse; border-spacing: 0; }
+/*基本样式*/
+html{font-size:28rpx;background-color: #f5f5f5; color: #333;}
+div{box-sizing:border-box;}
+.font-color{color:#ed7720!important;}
+.bg-color{background-color:#e93323!important;}
+.icon-color{color:#ff3c2b;}
+
+ul {padding:0;margin: 0;list-style: none;}
+/* a {text-decoration: none;color:#333;} */
+input,select,textarea,button {border: none;outline: none;}
+/*浮动布局*/
+.clearfix:after {content: "";display: table;clear: both;height:0;}
+.clearfix .fl{ float:left;  }
+.clearfix .fr{ float:right; }
+
+/*flex布局*/
+.flex-row{display:flex;flex-wrap:wrap;}
+.flex-row.row-top{align-items:flex-start;}
+.flex-row.row-middle{align-items:center;}
+.flex-row.row-bottom{align-items:flex-end;}
+.flex-row.row-left{justify-content:flex-start;}
+.flex-row.row-center{justify-content:center;}
+.flex-row.row-right{justify-content:flex-end;}
+.flex-row.row-between{justify-content:space-between;}
+.flex-row.row-around{justify-content:space-around;}
+.flex-row.row-column{flex-direction:column;}
+.flex-row.row-column-between{
+   flex-direction:column;justify-content:space-between;}
+.flex-row.row-column-around{
+   flex-direction:column;justify-content:space-around;}
+.flex-row.row-center-wrapper{
+   align-items:center;justify-content:center;}
+.flex-row.row-between-wrapper{
+   align-items:center;justify-content:space-between;}
+
+/*超出的文字内容显示为...*/
+.text-overflow {
+  overflow: hidden;white-space: nowrap;
+  letter-spacing: nowrap;text-overflow: ellipsis;max-width: 100%;}
+
+
