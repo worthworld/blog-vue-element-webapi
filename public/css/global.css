@@ -1,14 +1,12 @@
-/** 清除内外边距 **/
-body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
-dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
-pre, /* text formatting elements 文本格式元素 */
-form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
-th, td /* table elements 表格元素 */ {
-  margin: 0; padding: 0; vertical-align:baseline;  }
-/* 设置box-sizing */
-div{ box-sizing: border-box;}
-/** 设置默认字体 **/
-/* element-ui字体 */
+/** 设定默认样式 **/
+body,div, h1, h2, h3, h4, h5, h6, hr, p, blockquote, 
+dl, dt, dd, ul, ol, li, 
+pre, 
+form, fieldset, legend, button, input, textarea, 
+th, td  {
+  margin: 0; padding: 0; vertical-align:baseline;  box-sizing: border-box; }
+*{box-sizing: border-box;}
+/** 设置默认字体,element-ui字体 **/
 body,html{font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;}
 body,
 h1, h2, h3, h4, h5, h6 { font-size: 100%; }
@@ -45,15 +43,15 @@ input,select,textarea,button {border: none;outline: none;}
 .clearfix .fr{ float:right; }
 
 /*flex布局*/
-.flex-row{display:flex;flex-wrap:wrap;}
-.flex-row.row-top{align-items:flex-start;}
-.flex-row.row-middle{align-items:center;}
-.flex-row.row-bottom{align-items:flex-end;}
+.flex-row{display:-webkit-flex;display:flex;}
 .flex-row.row-left{justify-content:flex-start;}
 .flex-row.row-center{justify-content:center;}
 .flex-row.row-right{justify-content:flex-end;}
 .flex-row.row-between{justify-content:space-between;}
 .flex-row.row-around{justify-content:space-around;}
+.flex-row.row-top{align-items:flex-start;}
+.flex-row.row-middle{align-items:center;}
+.flex-row.row-bottom{align-items:flex-end;}
 .flex-row.row-column{flex-direction:column;}
 .flex-row.row-column-between{
    flex-direction:column;justify-content:space-between;}
@@ -63,6 +61,7 @@ input,select,textarea,button {border: none;outline: none;}
    align-items:center;justify-content:center;}
 .flex-row.row-between-wrapper{
    align-items:center;justify-content:space-between;}
+.flex-row .row-shrink{flex-shrink: 0;}
 
 /*超出的文字内容显示为...*/
 .text-overflow {

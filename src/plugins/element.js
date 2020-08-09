@@ -4,7 +4,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import {
     Button,Form,FormItem,Select,Option,
     DatePicker,TimePicker,Col,Switch,CheckboxGroup,
-    Checkbox,Radio,RadioGroup,Input,Backtop,Icon
+    Checkbox,Radio,RadioGroup,Input,Backtop,Icon,
+    Divider,Pagination
 } from 'element-ui';
 
 Vue.use(Button);
@@ -23,7 +24,9 @@ Vue.use(RadioGroup);
 Vue.use(Input);
 Vue.use(Backtop);
 Vue.use(Icon);
-
+Vue.use(Divider);
+Vue.use(Pagination);
+// Vue.use(text);
 /* 
  * Vue.use(Button)
  *或  Vue.component(Button.name,Button)

@@ -1,36 +1,31 @@
 <template>
-  <div class="app-box">
-    <BackTop>
+  <div id="app">
+       <router-view />
+    <!-- <BackTop>
       <template v-slot:main>
-         <router-view />
+             <router-view />
        </template>
-    </BackTop>
+    </BackTop> -->
   </div>
 </template>
 
 
 <script>
-import BackTop from "./components/element/backtop";
+// import BackTop from "./components/element/backtop";
 export default {
   name: "app",
-  components: { BackTop },
+  // components: { BackTop },
   methods: {},
   created(){
     console.log('33:'+this.$route.meta.title)
     this.$store.dispatch('Init')
     this.$setTitle(this.$route.meta.title)
-  },
+  }
 };
 </script>
 
-<style>
-:root {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  /* height: 100%;  */
-  /* margin-top: 60px; */
-}
+<style lang="less" scoped>
+ #app{
+   width:100vw;
+ }
 </style>

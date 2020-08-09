@@ -1,5 +1,7 @@
 <template>
     <div class="main-box">
+     
+     
     <main class="main flex-row row-center">
         <aside class="aside">
          <search  :dtList="blogList" @searchInput="getSearch" :searchColor="baseColor"></search>
@@ -31,14 +33,14 @@ export default {
     data(){
         return {
             type:0,
-            blogList:[{id:1,title:'初学前端',date:'4-12'},{id:2,title:'牛刀小试',date:'4-12'}
-            ,{id:3,title:'从入门到放弃',date:'2019-4-16'}],
-            showList:[{id:1,title:'初学前端',date:'4-12'},{id:2,title:'牛刀小试',date:'4-12'}
-            ,{id:3,title:'从入门到放弃',date:'2019-4-16'}],
+            blogList:[{id:1,title:'2020年前端总结',date:'4-12'},{id:2,title:'实验室',date:'4-12'}
+            ,{id:3,title:'前端劝退师',date:'2019-4-16'}],
+            showList:[{id:1,title:'2020年前端总结',date:'4-12'},{id:2,title:'实验室',date:'4-12'}
+            ,{id:3,title:'前端劝退师',date:'2019-4-16'}],
             titleList:[],
             pageSize:8,
             pageIndex:1,
-            baseColor:'#81e6c4'
+            baseColor:'#409EFF'
         }
     },
     components:{
@@ -102,7 +104,7 @@ export default {
     margin-bottom: 30px;
     background-color: #FFF;
     box-shadow: 5px 5px 20px #cccaca;
-    border-left: 12px solid #64a58f;
+    border-left: 12px solid #5989b9;
     text-align: left;
     padding:30px 20px 40px 130px ;
     transform: 0.4s;
@@ -118,7 +120,7 @@ export default {
     }
   }
   .blog-list:hover{
-      border-left: 12px solid #81e6c4 ;
+      border-left: 12px solid #3f9dfa;
       transform: scale(1.03);
   }
   }

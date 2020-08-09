@@ -2,9 +2,13 @@ import ViewIndex from '@/views/Index'
 import Home from '@/views/Home'
 import About from '@/views/About'
 import PagesIndex from '@/pages/Index'
-import PagesMain from '@/pages/main'
+import PagesMain from '@/pages/Main'
+import PagesNote from '@/pages/Note';
+import PagesBook from '@/pages/Book'
+import PagesMessage from '@/pages/Message';
+import PagesBlogDetails from '@/pages/BlogDetails';
 import AdminIndex from '@/admin/Index';
-import AdminMain from '@/admin/main'
+import AdminMain from '@/admin/Main'
 import Error404 from '@/views/Error'
 
 export default [
@@ -50,16 +54,58 @@ export default [
             title:'博客首页'
           }
         },
+        {
+          path:'note',
+          name:'blog-note',
+          component:PagesNote,
+          meta:{
+            title:'随笔'
+          }
+        },
+        {
+          path:'book',
+          name:'blog-book',
+          component:PagesBook,
+          meta:{
+            title:'收藏'
+          }
+        },
+        {
+          path:'message',
+          name:'blog-message',
+          component:PagesMessage,
+          meta:{
+            title:'留言板'
+          }
+        },
+        {
+          path:'blogdetails',
+          name:'blog-details',
+          component:PagesBlogDetails,
+          props:true,
+          meta:{
+            title:'文章详情页'
+          }
+        }
+
       ]
     },
-  
-    // mobile
+   
   
     
     // 后台管理系统
     {
       path:'/admin',
       component:AdminIndex,
+      beforeEnter:(to,from,next)=>{
+        if(localStorage.getItem('token'))
+        {
+          next()
+        }
+        else{
+          next({path:'Login'})
+        }
+      },
       redirect:'/admin/index',
       children:[
         {
@@ -77,7 +123,7 @@ export default [
   
     {
       path:'/',
-      redirect:'/views'
+      redirect:'/pages'
     },
     {
       path:'*',

@@ -3,7 +3,8 @@ const status={
      "isLogin":false,
      "blog_account":'',
      "blog_password":'',
-     "token":''
+     "token":'',
+     "nickName":''
     },
     mutations:{
         set_login:(state,val)=>{
@@ -15,6 +16,10 @@ const status={
         },
         set_token:(state,val)=>{
           state.token=val
+        },
+        set_nickName:(state,val)=>{
+          console.log('set_nickName',val)
+          state.nickName=val
         }
     },
     actions:{

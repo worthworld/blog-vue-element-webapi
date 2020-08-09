@@ -1,21 +1,46 @@
-# blog-element-vue
-   此项目基于vue-cli、vue-router、vuex、axios、element-ui、mavon-editor、Less的技术栈，且已开源；
-   github地址：https://github.com/worthworld/blog-vue-element.git
+# 前言
+   此项目基于vue-cli、vue-router、vuex、axios、element-ui、C#等技术栈，且已开源；
 
-#  特点
+ # github地址：
+   https://github.com/worthworld/blog-vue-element.git
+
+#  项目简介
 * 支持 MarkDown 编辑
-* 支持移动端
+* 使用媒体查询和flexbox做响应式布局
+* 项目分为原创文章板块、随笔板块、收藏板块和留言板块
+* 收藏板块主要收藏别人优秀的文章地址，点击跳转至对方网站
+* 前后端是分离的，后端使用C# webapi，可参考api接口使用其他语言开发；
 
 [在线地址](https://www.stonemei.cn)
 
-### 前端工具
-* Vue2.0
-* Vue-Router
-* Vuex
-* axios
-* element ui
-* Less
-* mavon-editor  
+### 前端主要技术
+  所有技术都是2020年最新的
+
+- Vue ^2.6.11
+- Vue-Router ^3.2.0
+- Vuex ^3.4.0
+- axios ^0.19.2
+- element-ui ^2.4.5
+- Less ^3.0.4
+- webpack： 4.28.4
+- mavon-editor ^2.9.0 
+
+### 后端主要技术
+
+- webapi (c#)
+- FluentData (orm) 
+- MySql  
+
+### 已经完成功能
+
+- [x] 标签 
+- [x] 收藏
+- [x] 点赞
+- [x] 评论
+- [x] 留言
+- [x] 文章列表  
+- [x] 文章详情 
+
 
 
 ## Project setup
@@ -43,5 +68,4 @@ npm run test:unit
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+

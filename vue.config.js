@@ -1,10 +1,10 @@
-let path = require("path");
+// let path = require("path");
 module.exports = {
   // https://api.blockbcd.top/index/
   lintOnSave: false,//是否在每次保存时使用eslint检查，这个对语法的要求比较严格
   //productionSourceMap: false,//不允许打包时生成项目来源映射文件，在生产环境下可以显著的减少包的体积
   //注 Source map的作用：针对打包后的代码进行的处理，就是一个信息文件，里面储存着位置信息。
-  publicPath: "./",//配置为相对路径，这样打包之后的包才能正常使用
+  // publicPath: "/",//配置为相对路径，这样打包之后的包才能正常使用
   css: {
     extract: true//是否启用css分离插件，默认是true，
     //如果不启用css样式分离插件，打包出来的css是通过内联样式的方式注入至dom中的，
@@ -50,14 +50,14 @@ module.exports = {
         './src/assets/public.less'
       ]
     }
-  },
-  chainWebpack(config) {
+  }
+  // ,chainWebpack(config) {
      //添加一个路径别名 假设有在assets/img/menu/目录下有十张图片，
     //如果全路径require("/assets/img/menu/img1.png")
     //去引入在不同的层级下实在是太不方便了，这时候向下方一样定义一个路劲别名就很实用了
-    config.resolve.alias
-      .set("assets", path.join(__dirname, "/src/assets"))//添加多个别名支持链式调用
-      .set("img", path.join(__dirname, "/src/assets/img/menu"))
+    // config.resolve.alias
+      // .set("assets", path.join(__dirname, "/src/assets"))//添加多个别名支持链式调用
+      // .set("img", path.join(__dirname, "/src/assets/img/menu"))
       //引入图片时只需require("img/img1.png");即可
-  }
+  // }
 }
