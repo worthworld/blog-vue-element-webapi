@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from '@/App.vue'
 import router from '@/router'
 import store from '@/store'
+import ajax from '@/utils/http'
 import '@/plugins/element.js'
 import {Message} from 'element-ui'
 // import '@/css/global.js'
@@ -9,15 +10,7 @@ import {Message} from 'element-ui'
 
 Vue.config.productionTip = false
 Vue.prototype.$message=Message
-Vue.prototype.$setTitle=function(title){
-  if(title){
-   document.title=store.state.config.htmlTitle+'-'+title
-  }
-  else{
-   document.title=store.state.config.htmlTitle
-  }
-}
-
+Vue.prototype.$https=ajax
 
 new Vue({
   router,

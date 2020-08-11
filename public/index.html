@@ -7,13 +7,17 @@
     <!-- <link rel="icon" href="<%= BASE_URL %>favicon.ico"> -->
     <link rel="icon" href="/img/favicon.jpg">
     <link href="/css/global.css" type="text/css" rel="stylesheet">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>WorthWorld的博客</title>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
+        <!-- 首屏加载动画 -->
+        <div id='load-box' style="text-align: center; height: 300px; margin-top: 15%">
+          <img src="./img/loading.svg" width="250" alt="加载中..." />
+        </div>
+      </div>
   </body>
 </html>

@@ -1,5 +1,5 @@
 # 前言
-   此项目基于vue-cli、vue-router、vuex、axios、element-ui、C#等技术栈，且已开源；
+   此项目基于vue-cli、vue-router、vuex、axios、element-ui、C#等技术栈开发的个人博客，且已开源；
 
  # github地址：
    https://github.com/worthworld/blog-vue-element.git

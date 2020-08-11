@@ -1,8 +1,9 @@
 import ViewIndex from '@/views/Index'
 import Home from '@/views/Home'
 import About from '@/views/About'
+import PagesHome from '@/pages/Home'
 import PagesIndex from '@/pages/Index'
-import PagesMain from '@/pages/Main'
+import PagesArticle from '@/pages/Article'
 import PagesNote from '@/pages/Note';
 import PagesBook from '@/pages/Book'
 import PagesMessage from '@/pages/Message';
@@ -42,16 +43,23 @@ export default [
   
     // pc
     {
+      path:'/pages/home',
+      component:PagesHome,
+      meta:{
+        title:'首页'
+      }
+    },
+    {
       path:'/pages',
-      redirect:'/pages/main',
+      redirect:'/pages/article',
       component:PagesIndex,
       children:[
         {
-          path:'main',
-          name:'blog-main',
-          component:PagesMain,
+          path:'article',
+          name:'blog-article',
+          component:PagesArticle,
           meta:{
-            title:'博客首页'
+            title:'文章'
           }
         },
         {
@@ -123,7 +131,7 @@ export default [
   
     {
       path:'/',
-      redirect:'/pages'
+      redirect:'/pages/home'
     },
     {
       path:'*',
