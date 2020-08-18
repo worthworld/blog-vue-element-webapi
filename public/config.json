@@ -1,5 +1,7 @@
 {
  "htmlTitle":"博客",
- "github":"https://github.com/worthworld/blog-vue-element.git"
-  
+ "github":"https://github.com/worthworld/",
+ "logo":"/img/logo.jpg",
+ "avatar":"/img/header.jpg",  
+ "touristAvatar":"/img/header.jpg"
 }

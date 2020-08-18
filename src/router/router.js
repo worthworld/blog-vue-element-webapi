@@ -4,10 +4,10 @@ import About from '@/views/About'
 import PagesHome from '@/pages/Home'
 import PagesIndex from '@/pages/Index'
 import PagesArticle from '@/pages/Article'
-import PagesNote from '@/pages/Note';
+import PagesPigeonhole from '@/pages/Pigeonhole';
 import PagesBook from '@/pages/Book'
 import PagesMessage from '@/pages/Message';
-import PagesBlogDetails from '@/pages/BlogDetails';
+import PagesArticleDetails from '@/pages/ArticleDetails';
 import AdminIndex from '@/admin/Index';
 import AdminMain from '@/admin/Main'
 import Error404 from '@/views/Error'
@@ -63,9 +63,9 @@ export default [
           }
         },
         {
-          path:'note',
-          name:'blog-note',
-          component:PagesNote,
+          path:'pigeonhole',
+          name:'blog-pigeonhole',
+          component:PagesPigeonhole,
           meta:{
             title:'随笔'
           }
@@ -87,9 +87,9 @@ export default [
           }
         },
         {
-          path:'blogdetails',
-          name:'blog-details',
-          component:PagesBlogDetails,
+          path:'articleDetails/:id',
+          name:'article-details',
+          component:PagesArticleDetails,
           props:true,
           meta:{
             title:'文章详情页'

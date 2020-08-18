@@ -1,6 +1,6 @@
 <template>
   <div class="main-box">
-    <main class="main flex-row row-center">
+    <main class="main flex-row row-center row-top col-cloumn">
       <aside class="aside">
         <sidebar
           :dtList="blogList"
@@ -21,8 +21,7 @@
               pageIndex * pageSize
             )"
             :key="item.id"
-            :to="{ name: 'article-details', params: { id: item.id } }"
-          >
+            :to="{ path: '/pages/articleDetails/' + item.id }">
             <span>{{ item.createTime }}</span>
             {{ item.title }}
           </router-link>
@@ -51,7 +50,7 @@ export default {
   data() {
     return {
       load: true,
-      params: { state: 0 },
+      params: { state: 1 },
       // blogList:[{id:1,title:'初学前端',tagsID:'',date:'4-12'},{id:2,title:'牛刀小试',date:'4-12'}
       // ,{id:3,title:'从入门到放弃',date:'4-16'}],
       // showList:[{id:1,title:'初学前端',date:'4-12'},{id:2,title:'牛刀小试',date:'4-12'}
@@ -139,7 +138,7 @@ export default {
       this.$message({
         message: msg || "请求异常",
         type: type || "info",
-        duration: 3000,
+        duration: 2500,
       });
     },
   },
@@ -190,7 +189,7 @@ export default {
         margin-bottom: 30px;
         background-color: #fff;
         box-shadow: 5px 5px 20px #cccaca;
-        border-left: 12px solid #64a58f;
+        border-left: 12px solid#5989b9;
         text-align: left;
         padding: 30px 20px 40px 130px;
         transform: 0.4s;
@@ -206,7 +205,7 @@ export default {
         }
       }
       .blog-list:hover {
-        border-left: 12px solid #81e6c4;
+        border-left: 12px solid #3f9dfa;
         transform: scale(1.03);
       }
     }

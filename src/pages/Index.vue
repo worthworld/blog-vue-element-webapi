@@ -1,35 +1,42 @@
 <template>
 <div>
     <header class="blog-head">
+      <div class="head-nav flex-row row-between row-bottom">
      <div class="blog-logo" @click="toIndex()">
      <img src="/img/logo.jpg"/>
      </div>
      <nav class="blog-nav flex-row row-between-wrapper">
-      <router-link class="nav-item" to="/pages/main">文章</router-link>
-      <router-link class="nav-item" to="/pages/note">随笔</router-link>
+      <router-link class="nav-item" to="/pages/article">文章</router-link>
+      <router-link class="nav-item" to="/pages/pigeonhole">归档</router-link>
       <router-link class="nav-item" to="/pages/book">收藏</router-link>
       <router-link class="nav-item" to="/pages/message">留言板</router-link>
      </nav>
+     </div>
     </header>
-      <!-- <el-divider></el-divider> -->
-       <router-view/>
+     <div class="main">
+        <router-view/>
+     </div>
+      
 </div>
 </template>
 
 <script>
+
 export default {
     methods:{
       toIndex(){
       this.$router.push({path:'/'})
       }
+    },
+    created(){
+
     }
 }
 </script>
 
 <style lang="less" scoped>
   .blog-head{
-      position: relative;
-      height: 70px;
+      height: 80px;
       width: 90%;
       margin:0 auto 30px;
       padding: 10px 0 15px ;
@@ -37,16 +44,20 @@ export default {
       font-size: 18px;
       border-bottom:1px solid #DCDFE6 ;
     @media screen and (max-width: 500px){
-      height: 60px;
-      widows: 100%;
-      margin: 5px 15px 15px;
-      padding: 5px 0 20px ;
+      height: 70px;
+      width: 100%;
+      margin: 15px 0;
+      padding: 5px 20px 10px ;
     }
+     .head-nav{
+        width: 1200px;
+        height: 100%;
+        margin: auto;
+        @media screen and (max-width: 500px){
+        width: 100%;
+        }
+      }
     .blog-logo{
-      // margin:12px 0 0 10px;
-      margin-left: 10px;
-      position: absolute;
-      left: 0;
       height: 50px;
       width: 50px;
       border-radius: 50%;
@@ -58,12 +69,9 @@ export default {
       }
    
     .blog-nav{
-       position: absolute;
-       right: 0;
        width: 40%;
-       display: flex;
      @media screen and (max-width:500px){
-          width: 70%;
+          width: 80%;
       }
        a{
         margin-top: 10px;
@@ -98,5 +106,13 @@ export default {
 
     }
 
+  }
+  .main{
+    width: 100%;
+    min-width:1200px;
+    margin: auto;
+    @media screen and(max-width: 500px){
+    min-width:200px;
+    }
   }
 </style>

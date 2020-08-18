@@ -22,25 +22,17 @@ module.exports = {
     hot: true,//是否启用热加载，就是每次更新代码，是否需要重新刷新浏览器才能看到新代码效果
     port: "800",//服务启动端口
     open: false,//是否自动打开浏览器默认为false
-    proxy: {  //配置http代理
-              //axios中url使用/api/test路径，请求路径解析成https://stonemei.cn/api/test
-              //浏览器上的url还是 http://localhost:8083/api/test
-      "/api": { 
-        target: "https://stonemei.cn", //目标路径，别忘了写http和端口号
-        changeOrigin: true,//是否允许跨域，在开发环境会起作用，生产环境下由后台去处理
-        pathRewrite: {
-          "^/api": "" // 重写路径
-        //比如 axios.post('/api/test', {name: 'xiao'}); 
-        //没有重新则https://stonemei.cn/api/test
-        //重新路径则 https://stonemei.cn/test
-        }
-      
-      },
-      "/url2": {//可以配置多个代理，匹配上那个就使用哪种解析方式
-        target: "https://api2",
-        // ...
-      }
-    }
+    proxy:"http://www.stonemei.cn"    //http://192.168.0.106:3553 
+    // proxy: {  
+    //   "/proxy": { 
+    //     target: "http://www.stonemei.cn", 
+    //     changeOrigin: true,
+    //     ws:true,
+    //     pathRewrite: {
+    //       "^/proxy": "" 
+    //     }
+    //   }
+    // }
   },
   pluginOptions: {
     'style-resources-loader': {

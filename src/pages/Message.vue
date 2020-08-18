@@ -1,19 +1,14 @@
 <template>
     <div class="app">
-       <BackTop>
-      <template v-slot:main>
           <div>
           <publicMessage :type="type" :messageList="messageList" @submitMsg="postMsg"></publicMessage>
         </div>
-
-       </template>
-    </BackTop>
     </div>
 </template>
 
 <script>
 import publicMessage from '@/components/publicMessage'
-import BackTop from "@/components/element/backtop";
+let that;
 export default {
     data(){
       return{
@@ -25,23 +20,72 @@ export default {
         ]
       }
     },
-    components:{publicMessage,BackTop},
+    components:{publicMessage},
+    mounted(){
+      that=this
+      that.getMsg()
+    },
     methods:{
-        postMsg(nickName,msg){
-         console.log('32:'+nickName,msg)
+     async getMsg(){
+       let ret=await that.$https.get('GetLeaveMessage');
+       if(ret.status==200){
+         if(ret.data.Data.length>0){
+            that.messageList=ret.data.Data.map(item=>{
+            item.avatar=that.$store.state.config.touristAvatar
+            return item
+          });
+         }
+         else{
+           this.showMessage("info", "还没有留言");
+         }
+       }
+       else{
+            this.showMessage("error", "服务器异常");
+       }
+     },
+     // 评论
+    async postMsg(nickName, msg) {
+      let data = {
+        nickName: nickName,
+        createTime: null,
+        contents: msg,
+        type: "leave",
+        articlesID: 0,
+      };
+      let ret = await that.$https.post("addMessage", data, {
+        headers: {"Content-Type": "application/x-www-form-urlencoded;charset=utf-8;"},
+      });
+      console.log(JSON.stringify(ret.data));
+      if (ret.status == 200 && ret.data.Data) {
+        this.showMessage("success", "留言成功");
+        //后续改成 静态新增留言，不再访问浏览器刷新数据
+        that.getMsg();
+      } else {
+        this.showMessage("error", "服务器异常,留言失败");
       }
+    },
+    //提示
+    showMessage(type, msg) {
+      this.$message({
+        message: msg || "请求异常",
+        type: type || "info",
+        duration: 3000,
+      });
+    },
     }
 }
 </script>
 import moduleName from '@/components/publicMessage';
 <style lang="less" scoped>
   .app{
-  padding: 10px 70px 0;
-  width: 100%;
+  // padding: 10px 70px 0;
+  margin: auto;
+  width: 1200px;
   min-height: 100vh;
   @media screen and (max-width: 500px){
-  padding:10px 15px 0 ;
+  padding:10px 15px 20px ;
   min-height: 90vh;
+  width: 100%;
    }
   }
 </style>

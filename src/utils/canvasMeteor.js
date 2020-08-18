@@ -1,19 +1,50 @@
-// function draw() {
-//     var c = document.getElementById('meteor');
-//     if (!c || !c.getContext) return;
-//     let img = new Image();
-//     img.onload = function () {
-//         console.log('draw')
-//         let ctx = c.getContext('2d')
-//         ctx.fillStyle = '#775500'
-//         ctx.fillRect(0, 0, 1900, 2500)
-//     }
-//     img.src = ""
-// }
+function drawImage(id,imgSrc) {
+     var c = document.getElementById(id);
+     var ctx=c.getContext("2d")
+    if (!c || !c.getContext) return;
+    let img = new Image();
+    img.src=imgSrc
+    img.onload = function () {
+        console.log('draw')
+        let imgRect=coverImg(c.width,c.height,img.width,img.height) //与cover相似的图片自适应
+        ctx.drawImage(img,imgRect.sx, imgRect.sy, imgRect.sWidth, imgRect.sHeight,0,0,c.width,c.height)
+        // ctx.save();
+        // ctx.globalCompositeOperation="source-over";
+    }
+    
+}
 
-// export default draw
+/**
+ * @param {Number} box_w 固定盒子的宽, box_h 固定盒子的高
+ * @param {Number} source_w 原图片的宽, source_h 原图片的高
+ * @return {Object} {截取的图片信息}，对应drawImage(imageResource, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)参数
+  */
+ function coverImg(box_w, box_h, source_w, source_h){
+        var sx = 0,
+            sy = 0,
+            sWidth = source_w,
+            sHeight = source_h;
+        let boxScale=box_w/box_h;
+        let sourceScale=source_w/source_h;
+          if(sourceScale>boxScale)
+          {
+            sWidth=box_w*source_h/box_h
+            sx=(source_w-sWidth)/2
+          }
+          else if(sourceScale<boxScale){
+            sHeight=box_h*source_w/box_w
+            sy=(source_h-sHeight)/2
+          }
+        return {sx,sy,sWidth,sHeight}
+    }
 
-// 坐标
+
+
+
+
+
+
+//坐标
 
 class Crood {
   constructor(x = 0, y = 0) {
@@ -39,8 +70,8 @@ class ShootingStar {
   constructor(
     init = new Crood(),
     final = new Crood(),
-    size = 3,
-    speed = 200,
+    size = 30,
+    speed = 100,
     onDistory = null
   ) {
     this.init = init;
@@ -146,14 +177,13 @@ class MeteorShower {
       init.y + distance * Math.sin(angle)
     );
 
-    let size = Math.random() * 2;
-    let speed = Math.random() * 400 + 100;
+    let size = Math.random() * 3;
+    let speed = Math.random() * 400+50;
     let star = new ShootingStar(
       init,
       final,
       size,
       speed,
-
       () => {
         this.remove(star);
       }
@@ -209,12 +239,15 @@ class MeteorShower {
       this.T = requestAnimationFrame(_tick);
 
       this.ctx.save();
+      // this.ctx.fillStyle = "rgba(0,0,0,0.8)";
+      // this.ctx.globalCompositeOperation = 'destination-in';
+      // // 每一帧用 “半透明” 的背景色清除画布
+      // this.ctx.fillRect(0, 0, this.cvs.width, this.cvs.height);
 
-      this.ctx.fillStyle = "rgba(0,0,0,0.2)";
-      // 每一帧用 “半透明” 的背景色清除画布
-
+      this.ctx.fillStyle = "rgba(0,0,0,0.8)";
+      this.ctx.globalCompositeOperation = 'destination-in';
       this.ctx.fillRect(0, 0, this.cvs.width, this.cvs.height);
-
+      // drawImage(this.cvs,this.ctx)
       this.ctx.restore();
 
       this.update(delta);
@@ -225,7 +258,7 @@ class MeteorShower {
 
   start() {
     this.stop = false;
-
+   
     this.tick();
   }
 
@@ -236,22 +269,15 @@ class MeteorShower {
 
 // effet
 
-function draw() {
-  let cvs = document.getElementById("meteor");
+function trck(id) {
+  let cvs = document.getElementById(id);
   let ctx = cvs.getContext("2d");
-//   let img=new Image();
-//    img.src='/img/back.jpg'
-//    img.onload=()=>{
-//        ctx.drawImage(img,0,0)
-//        ctx.fillStyle = "rgba(0,0,0,0.8)";
-//        ctx.globalCompositeOperation = "destination-in";
-//        ctx.fillRect(0, 0, cvs.width, cvs.height);
-//    }
-  
-
+ 
   let meteorShower = new MeteorShower(cvs, ctx);
-
   meteorShower.start();
+
 }
 
-export default draw;
+
+
+export default {trck,drawImage};

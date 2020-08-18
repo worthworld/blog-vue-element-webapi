@@ -2,17 +2,18 @@
     <div class="main-box">
      
      
-    <main class="main flex-row row-center">
+    <main class="main flex-row row-center row-top">
         <aside class="aside">
-         <search  :dtList="blogList" @searchInput="getSearch" :searchColor="baseColor"></search>
+         <sidebar  :dtList="blogList" @searchInput="getSearch" :searchColor="baseColor"></sidebar>
     
         </aside>
         <article class="article">
-        <ul>
-          <a :href="item.linkUrl" target="_blank" :key="item.id"
+               <loading class="load" v-if="load"></loading>
+        <ul v-if="showList.length>0">
+          <a :href="item.url" target="_blank" :key="item.id"
           v-for="item in showList.slice((pageIndex-1)*pageSize,pageIndex*pageSize)" >
           <li class="blog-list" >
-          <span>{{item.date}}</span>
+          <span>{{item.createTime}}</span>
           {{item.title}}
             </li>
          </a>
@@ -28,37 +29,51 @@
 </template>
 
 <script>
-import axios from 'axios'
-import search from '@/components/search'
+import sidebar from '@/components/sidebar'
+import loading from '@/components/loading'
+let that={}
 export default {
     data(){
         return {
-            type:0,
-            blogList:[{id:1,title:'2020年前端总结',date:'4-12',linkUrl:'https://www.baidu.com'},{id:2,title:'实验室',date:'4-12',linkUrl:'https://www.stonemei.cn'}
-            ,{id:3,title:'前端劝退师',date:'2019-4-16',linkUrl:'www.imoc.com'}],
-            showList:[{id:1,title:'2020年前端总结',date:'4-12',linkUrl:'https://www.baidu.com'},{id:2,title:'实验室',date:'4-12',linkUrl:'https://www.stonemei.cn'}
-            ,{id:3,title:'前端劝退师',date:'2019-4-16',linkUrl:'https://www.imoc.com'}],
-            titleList:[],
+            load:true,
+            params:{type:'文章'},
+            blogList:[],
+            showList:[],
             pageSize:8,
             pageIndex:1,
             baseColor:'#E6A23C'
         }
     },
     components:{
-     search 
+     sidebar,loading 
     },
     mounted(){
-    
+      that=this
+      that.getGlogList()
     },
     methods:{
         pageChange(val){
            this.pageIndex=val
         },
-        getGlogList(){
-
-            axios.get('').then({
-
-            })
+        async getGlogList(){
+           let ret=await that.$https.get('GetBooks');
+           that.load=false
+           if(ret.status==200){
+               if(ret.data.Data.length>0){
+                let dataList=ret.data.Data.map(item=>{
+                     item.createTime = item.createTime.slice(5, 10);
+              return item;
+                 })
+                 that.blogList=dataList
+                 that.showList=dataList
+               }
+               else{
+                   that.showMessage("info", "还没有收藏哦~");
+               }
+           }
+           else{
+         that.showMessage("error", "服务器异常");
+           }
         },
         getSearch(ret){
          this.showList=(this.blogList.filter(item=>{
@@ -67,41 +82,62 @@ export default {
                 return item;
              }
          }))
-        }
+        },
+        //提示
+       showMessage(type, msg) {
+      this.$message({
+        message: msg || "请求异常",
+        type: type || "info",
+        duration: 3000,
+      });
+    },
     }
 }
 </script>
 
 <style lang="less" scoped>
 .main-box{
-  width: 100%;
+  margin: auto;
+  width: 1200px;
+  @media screen and (max-width: 500px){
+    width:100%;
+  }
   .main{
-  padding: 10px 70px 0;
-  min-height: 100vh;
+  // min-height: 100vh;
   flex-shrink: 0;
   flex-wrap: wrap;
   @media screen and (max-width: 500px){
   padding:10px 15px 0 ;
-  min-height: 90vh;
+  // min-height: 90vh;
   }
   .aside{
     // border:1px solid red;
     width: 34%;
-    padding-right: 30px;
+    min-width: 200px;
+    padding-left: 30px;
     @media screen and (max-width: 500px){
     width: 100%;
-    padding-right:0;
+    padding-left:0;
     }
   }
   .article{
+    order: -1;
     width: 60%;
-    margin-left: 20px;
+    margin-right: 20px;
    @media screen and (max-width: 500px){
+    order: 2;
     width: 100%;
-    margin-left: 0;
+    margin-right: 0;
   }
+   @media screen and(min-width:700px ){
+     .load{
+      margin-top: 100px;
+    }
+   }
+   a{
+     color: #555;
+   }
   .blog-list{
-    display: block;
     position: relative;
     margin-bottom: 30px;
     background-color: #FFF;
@@ -132,5 +168,8 @@ export default {
       padding:20px 0;
   }
 }
+
+
+
 
 </style>
