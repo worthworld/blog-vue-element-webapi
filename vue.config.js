@@ -22,7 +22,7 @@ module.exports = {
     hot: true,//是否启用热加载，就是每次更新代码，是否需要重新刷新浏览器才能看到新代码效果
     port: "800",//服务启动端口
     open: false,//是否自动打开浏览器默认为false
-    proxy:"http://www.stonemei.cn"    //http://192.168.0.106:3553 
+    proxy:"http://www.stonemei.cn"    // http://www.stonemei.cn
     // proxy: {  
     //   "/proxy": { 
     //     target: "http://www.stonemei.cn", 

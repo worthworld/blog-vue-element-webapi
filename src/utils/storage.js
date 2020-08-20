@@ -4,33 +4,7 @@
  * localStorage 浏览器中存储,没有过期时间
  * sessionStorage 保存在当前会话中，关闭窗口或标签页即删除
  */
-let ls={},ss={}
-
- function checkLocalSupper(){
-    if(!window.localStorage)
-    { 
-     alert('浏览器不支持localStorage,请升级浏览器')
-     return false;
-    }
-    else{
-    ls=window.localStorage
-   }
- }
-
- function checkSessionSupper(){
-    if(!window.sessionStorage)
-    { 
-     alert('浏览器不支持sessionStorage,请升级浏览器')
-     return false;
-    }
-    else{
-    ls=window.sessionStorage
-   }
- }
-
- checkLocalSupper()
- checkSessionSupper()
-
+let ls=window.localStorage,ss=window.sessionStorage
  
 export const cookie={
     get(key){
@@ -76,11 +50,11 @@ export const cookie={
 
 export const Local={
   get(key){
-    if(key)  return JSON.parse(ls.getTime(key)||'null')
+    if(key)  return JSON.parse(ls.getItem(key)||'null')
     return null
   },
   set(key,val){
-    ls.setTime(key,JSON.stringify(val))
+    ls.setItem(key,JSON.stringify(val))
   },
   remove(key){
       if(key) {
@@ -94,11 +68,11 @@ export const Local={
 
 export const Session={
     get(key){
-      if(key)  return JSON.parse(ss.getTime(key)||'null')
+      if(key)  return JSON.parse(ss.getItem(key)||'null')
       return null
     },
     set(key,val){
-      ss.setTime(key,JSON.stringify(val))
+      ss.setItem(key,JSON.stringify(val))
     },
     remove(key){
         if(key) {

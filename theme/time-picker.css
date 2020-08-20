@@ -560,9 +560,9 @@
   line-height: 1; }
 
 .el-range-editor.is-active {
-  border-color: #606266; }
+  border-color: #FFF; }
   .el-range-editor.is-active:hover {
-    border-color: #606266; }
+    border-color: #FFF; }
 
 .el-range-editor--medium.el-input__inner {
   height: 36px; }
@@ -607,14 +607,14 @@
   line-height: 20px; }
 
 .el-range-editor.is-disabled {
-  background-color: #F5F7FA;
+  background-color: #FFF;
   border-color: #E4E7ED;
   color: #C0C4CC;
   cursor: not-allowed; }
   .el-range-editor.is-disabled:hover, .el-range-editor.is-disabled:focus {
     border-color: #E4E7ED; }
   .el-range-editor.is-disabled input {
-    background-color: #F5F7FA;
+    background-color: #FFF;
     color: #C0C4CC;
     cursor: not-allowed; }
     .el-range-editor.is-disabled input::-webkit-input-placeholder {
@@ -784,10 +784,10 @@
     outline: none;
     cursor: pointer; }
     .el-picker-panel__shortcut:hover {
-      color: #606266; }
+      color: #FFF; }
     .el-picker-panel__shortcut.active {
       background-color: #e6f1fe;
-      color: #606266; }
+      color: #FFF; }
   .el-picker-panel__btn {
     border: 1px solid #dcdcdc;
     color: #333;
@@ -810,7 +810,7 @@
     outline: none;
     margin-top: 8px; }
     .el-picker-panel__icon-btn:hover {
-      color: #606266; }
+      color: #FFF; }
     .el-picker-panel__icon-btn.is-disabled {
       color: #bbb; }
       .el-picker-panel__icon-btn.is-disabled:hover {
@@ -991,7 +991,7 @@
   line-height: 30px;
   cursor: pointer; }
   .el-time-spinner__arrow:hover {
-    color: #606266; }
+    color: #FFF; }
   .el-time-spinner__arrow.el-icon-arrow-up {
     top: 10px; }
   .el-time-spinner__arrow.el-icon-arrow-down {
@@ -1020,7 +1020,7 @@
   font-size: 12px;
   color: #606266; }
   .el-time-spinner__item:hover:not(.disabled):not(.active) {
-    background: #F5F7FA;
+    background: #FFF;
     cursor: pointer; }
   .el-time-spinner__item.active:not(.disabled) {
     color: #303133;
@@ -1217,7 +1217,7 @@
     color: #303133; }
     .el-time-panel__btn.confirm {
       font-weight: 800;
-      color: #606266; }
+      color: #FFF; }
 
 /* Element Chalk Variables */
 /* Transition
@@ -1645,7 +1645,7 @@
       border-color: #C0C4CC; }
     .el-textarea__inner:focus {
       outline: none;
-      border-color: #606266; }
+      border-color: #FFF; }
   .el-textarea .el-input__count {
     color: #909399;
     background: #FFFFFF;
@@ -1654,7 +1654,7 @@
     bottom: 5px;
     right: 10px; }
   .el-textarea.is-disabled .el-textarea__inner {
-    background-color: #F5F7FA;
+    background-color: #FFF;
     border-color: #E4E7ED;
     color: #C0C4CC;
     cursor: not-allowed; }
@@ -1745,7 +1745,7 @@
       border-color: #C0C4CC; }
     .el-input__inner:focus {
       outline: none;
-      border-color: #606266; }
+      border-color: #FFF; }
   .el-input__suffix {
     position: absolute;
     height: 100%;
@@ -1784,9 +1784,9 @@
     pointer-events: none; }
   .el-input.is-active .el-input__inner {
     outline: none;
-    border-color: #606266; }
+    border-color: #FFF; }
   .el-input.is-disabled .el-input__inner {
-    background-color: #F5F7FA;
+    background-color: #FFF;
     border-color: #E4E7ED;
     color: #C0C4CC;
     cursor: not-allowed; }
@@ -1840,7 +1840,7 @@
     vertical-align: middle;
     display: table-cell; }
   .el-input-group__append, .el-input-group__prepend {
-    background-color: #F5F7FA;
+    background-color: #FFF;
     color: #909399;
     vertical-align: middle;
     display: table-cell;

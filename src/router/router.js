@@ -1,6 +1,8 @@
 import ViewIndex from '@/views/Index'
 import Home from '@/views/Home'
 import About from '@/views/About'
+import Add from '@/views/Add'
+import Edit from '@/views/Edit'
 import PagesHome from '@/pages/Home'
 import PagesIndex from '@/pages/Index'
 import PagesArticle from '@/pages/Article'
@@ -8,6 +10,7 @@ import PagesPigeonhole from '@/pages/Pigeonhole';
 import PagesBook from '@/pages/Book'
 import PagesMessage from '@/pages/Message';
 import PagesArticleDetails from '@/pages/ArticleDetails';
+
 import AdminIndex from '@/admin/Index';
 import AdminMain from '@/admin/Main'
 import Error404 from '@/views/Error'
@@ -33,7 +36,22 @@ export default [
           path: 'about',
           name: 'About',
           component:About,
-          // component: () => import('@/views/About.vue'),
+          meta:{
+            title:'关于'
+          }
+        },
+        {
+          path: 'add',
+          name: 'add',
+          component: Add,
+          meta:{
+            title:'新增'
+          }
+        },
+        {
+          path: 'edit',
+          name: 'edit',
+          component:Edit,
           meta:{
             title:'关于'
           }

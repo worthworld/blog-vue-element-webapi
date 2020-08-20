@@ -448,7 +448,7 @@
     left: 0;
     top: 0;
     height: 100%;
-    background-color: #606266;
+    background-color: #FFF;
     text-align: right;
     border-radius: 100px;
     line-height: 1;
@@ -633,13 +633,13 @@
       font-size: 28px;
       color: #8c939d; }
     .el-upload--picture-card:hover {
-      border-color: #606266;
-      color: #606266; }
+      border-color: #FFF;
+      color: #FFF; }
   .el-upload:focus {
-    border-color: #606266;
-    color: #606266; }
+    border-color: #FFF;
+    color: #FFF; }
     .el-upload:focus .el-upload-dragger {
-      border-color: #606266; }
+      border-color: #FFF; }
 
 .el-upload-dragger {
   background-color: #fff;
@@ -669,13 +669,13 @@
     font-size: 14px;
     text-align: center; }
     .el-upload-dragger .el-upload__text em {
-      color: #606266;
+      color: #FFF;
       font-style: normal; }
   .el-upload-dragger:hover {
-    border-color: #606266; }
+    border-color: #FFF; }
   .el-upload-dragger.is-dragover {
     background-color: rgba(32, 159, 255, 0.06);
-    border: 2px dashed #606266; }
+    border: 2px dashed #FFF; }
 
 .el-upload-list {
   margin: 0;
@@ -726,9 +726,9 @@
       font-size: 12px;
       cursor: pointer;
       opacity: 1;
-      color: #606266; }
+      color: #FFF; }
     .el-upload-list__item:hover {
-      background-color: #F5F7FA; }
+      background-color: #FFF; }
       .el-upload-list__item:hover .el-icon-close {
         display: inline-block; }
       .el-upload-list__item:hover .el-progress__text {
@@ -736,7 +736,7 @@
     .el-upload-list__item.is-success .el-upload-list__item-status-label {
       display: block; }
     .el-upload-list__item.is-success .el-upload-list__item-name:hover, .el-upload-list__item.is-success .el-upload-list__item-name:focus {
-      color: #606266;
+      color: #FFF;
       cursor: pointer; }
     .el-upload-list__item.is-success:focus:not(:hover) {
       /* 键盘focus */ }
@@ -780,7 +780,7 @@
     color: #606266;
     display: none; }
     .el-upload-list__item-delete:hover {
-      color: #606266; }
+      color: #FFF; }
   .el-upload-list--picture-card {
     margin: 0;
     display: inline;

@@ -16,7 +16,7 @@
                 </div>
                 <div class="blog-msg">
                   <i class="el-icon-thumb"></i>
-                  <span>{{ details.likes }}</span>
+                  <span>{{ details.likes}}</span>
                 </div>
                 <div class="blog-msg">
                   <i class="el-icon-chat-line-square"></i>
@@ -24,9 +24,22 @@
                 </div>
               </div>
             </div>
-            <div v-html="details.contents"></div>
-            <div>
-              <vue-clap-button v-if="flag" size="60" :clicked="isClicked" />
+            <mavon-editor
+            :value="details.contents"
+            :subfield="false"
+            :defaultOpen="preview"
+            :boxShadow='false'
+            :toolbarsFlag="false"
+            :editable="false"
+            :scrollStyle="true"
+            :ishljs="true"
+            :previewBackground='previewBackground'
+            />
+            <div class="like-box">
+              <vue-clap-button class="clap-button" v-if="flag" 
+              @clap="mylike('add')"  @cancel="mylike('reduce')"
+              :size="60" :clicked="isClicked" />
+              <span>{{details.likes+'人点赞'}}</span>
             </div>
           </div>
           <footer>
@@ -39,12 +52,11 @@
         </div>
   </div>
 </template>
-
 <script>
 import publicMessage from "@/components/publicMessage";
 import loading from "@/components/loading";
-import vueClapButton from "vue-clap-button";
-
+import * as storage from "@/utils/storage"
+let Local=storage.Local
 let that = {};
 export default {
   data() {
@@ -55,17 +67,23 @@ export default {
       type: "comment",
       details: {},
       messageList: [],
-      blogDetails: {
-        title: "博客标题",
-        html:
-          "<div>我是内容呀</div><div>我是内容呀</div><div>我是内容呀</div><div>我是内容呀</div>",
-      },
+      navigation:true,
+      preview:'preview',
+      previewBackground:'#f5f5f5'
     };
   },
-  components: { publicMessage, loading, vueClapButton },
+  components: { publicMessage, loading},
+  created(){
+     that = this;
+     that.getBlogDetails();
+  },
   mounted() {
-    that = this;
-    that.getBlogDetails();
+    setTimeout(() => {
+         that.isClicked=that.getLikeStatus() 
+        that.flag=true
+         console.log('初始化clicked:'+that.isClicked)
+    }, 500);
+ 
   },
   props: ["id"],
   methods: {
@@ -78,9 +96,10 @@ export default {
       // console.log("axios:" + JSON.stringify(res.data));
       if (res.status === 200) {
         if (res.data.StatusCode === 0 && res.data.Data) {
-          that.details = res.data.Data.details;
+          let detail=res.data.Data
+          that.details = detail.details;
           // 暂时不支持用户上传头像，默认配置头像
-          that.messageList = res.data.Data.messageList.map(item=>{
+          that.messageList = detail.messageList.map(item=>{
             item.avatar=that.$store.state.config.touristAvatar
             return item
           });
@@ -100,10 +119,8 @@ export default {
         type: "comment",
         articlesID: that.id,
       };
-      let ret = await that.$https.post("addMessage", data, {
-        headers: {"Content-Type": "application/x-www-form-urlencoded;charset=utf-8;"},
-      });
-      console.log(JSON.stringify(ret.data));
+      let ret = await that.$https.post("addMessage", data);
+      // console.log(JSON.stringify(ret.data));
       if (ret.status == 200 && ret.data.Data) {
         this.showMessage("success", "评论成功");
         //后续改成 静态新增留言，不再访问浏览器刷新数据
@@ -111,6 +128,43 @@ export default {
       } else {
         this.showMessage("error", "服务器异常,留言失败");
       }
+    },
+    // 点赞
+    async mylike(type) {
+        // console.log('点赞')
+        let data={ id: that.id,type:type }
+        const res = await that.$https.post("likes", data);
+      if (res.status === 200) {
+        if (res.data.StatusCode === 0 && res.data.Data) {
+            that.setMyLikes(type)
+        } else {
+          this.showMessage("warning", "点赞失败");
+        }
+      } else {
+        this.showMessage("error", "服务器异常");
+      }
+    },
+       //查看是否有点赞
+     getLikeStatus(){
+       let key='mylike_'+that.id
+       let mylike=Local.get(key)
+      //  console.log('storage:',mylike)
+       return !!mylike
+     },
+    // 由于没有游客的功能，点赞使用localStorage
+    setMyLikes(type){
+     let key='mylike_'+that.id
+      // console.log('type:',type)
+      if(type==='add'){
+        // console.log('add:',type)
+        Local.set(key,that.id)
+        that.details['likes']=that.details['likes']+1
+      }
+      else{
+        Local.remove(key)
+        that.details['likes']=that.details['likes']-1
+      }
+      that.getLikeStatus()
     },
     //提示
     showMessage(type, msg) {
@@ -137,15 +191,15 @@ export default {
     margin: auto;
     overflow: hidden;
     box-shadow: 5px 5px 20px #cccaca;
-    padding: 20px;
+    padding:30px 20px;
     margin-bottom: 30px;
     @media screen and (max-width: 500px) {
       width: 100%;
-      padding: 10px;
+      padding:20px 10px;
     }
   }
   .blog-title {
-    padding: 10px 0 20px;
+    padding-bottom:20px;
     h1 {
       text-align: center;
       font-size: 32px;
@@ -162,7 +216,13 @@ export default {
     }
   }
 }
-
+.like-box{
+    width: 100%;
+     text-align: center;
+  .clap-button{
+    margin: 5px auto;
+  }
+}
 footer {
   width: 100%;
 }
