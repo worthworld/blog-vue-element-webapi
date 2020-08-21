@@ -15,12 +15,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to,from,next)=>{
-  let isLogin=store.state.status.isLogin
-  let path=to.path.indexOf('admin')>0
-  if(path&&to.name!='login'&&!isLogin)
-  {
-   return next({path:'/admin/login'})
-  }
   next(); 
 })
 

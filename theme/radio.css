@@ -391,7 +391,7 @@
     box-sizing: border-box;
     height: 40px; }
     .el-radio.is-bordered.is-checked {
-      border-color: #FFF; }
+      border-color: #606266; }
     .el-radio.is-bordered.is-disabled {
       cursor: not-allowed;
       border-color: #EBEEF5; }
@@ -435,16 +435,16 @@
     position: relative;
     vertical-align: middle; }
     .el-radio__input.is-disabled .el-radio__inner {
-      background-color: #FFF;
+      background-color: #f2f2f2;
       border-color: #E4E7ED;
       cursor: not-allowed; }
       .el-radio__input.is-disabled .el-radio__inner::after {
         cursor: not-allowed;
-        background-color: #FFF; }
+        background-color: #f2f2f2; }
       .el-radio__input.is-disabled .el-radio__inner + .el-radio__label {
         cursor: not-allowed; }
     .el-radio__input.is-disabled.is-checked .el-radio__inner {
-      background-color: #FFF;
+      background-color: #f2f2f2;
       border-color: #E4E7ED; }
       .el-radio__input.is-disabled.is-checked .el-radio__inner::after {
         background-color: #C0C4CC; }
@@ -452,15 +452,15 @@
       color: #C0C4CC;
       cursor: not-allowed; }
     .el-radio__input.is-checked .el-radio__inner {
-      border-color: #FFF;
-      background: #FFF; }
+      border-color: #606266;
+      background: #606266; }
       .el-radio__input.is-checked .el-radio__inner::after {
         -webkit-transform: translate(-50%, -50%) scale(1);
         transform: translate(-50%, -50%) scale(1); }
     .el-radio__input.is-checked + .el-radio__label {
-      color: #FFF; }
+      color: #606266; }
     .el-radio__input.is-focus .el-radio__inner {
-      border-color: #FFF; }
+      border-color: #606266; }
   .el-radio__inner {
     border: 1px solid #DCDFE6;
     border-radius: 100%;
@@ -473,7 +473,7 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box; }
     .el-radio__inner:hover {
-      border-color: #FFF; }
+      border-color: #606266; }
     .el-radio__inner::after {
       width: 4px;
       height: 4px;
@@ -502,8 +502,8 @@
   .el-radio:focus:not(.is-focus):not(:active):not(.is-disabled) {
     /*获得焦点时 样式提醒*/ }
     .el-radio:focus:not(.is-focus):not(:active):not(.is-disabled) .el-radio__inner {
-      -webkit-box-shadow: 0 0 2px 2px #FFF;
-      box-shadow: 0 0 2px 2px #FFF; }
+      -webkit-box-shadow: 0 0 2px 2px #606266;
+      box-shadow: 0 0 2px 2px #606266; }
   .el-radio__label {
     font-size: 14px;
     padding-left: 10px; }

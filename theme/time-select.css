@@ -680,9 +680,9 @@
   line-height: 1; }
 
 .el-range-editor.is-active {
-  border-color: #FFF; }
+  border-color: #606266; }
   .el-range-editor.is-active:hover {
-    border-color: #FFF; }
+    border-color: #606266; }
 
 .el-range-editor--medium.el-input__inner {
   height: 36px; }
@@ -727,14 +727,14 @@
   line-height: 20px; }
 
 .el-range-editor.is-disabled {
-  background-color: #FFF;
+  background-color: #f2f2f2;
   border-color: #E4E7ED;
   color: #C0C4CC;
   cursor: not-allowed; }
   .el-range-editor.is-disabled:hover, .el-range-editor.is-disabled:focus {
     border-color: #E4E7ED; }
   .el-range-editor.is-disabled input {
-    background-color: #FFF;
+    background-color: #f2f2f2;
     color: #C0C4CC;
     cursor: not-allowed; }
     .el-range-editor.is-disabled input::-webkit-input-placeholder {
@@ -1154,10 +1154,10 @@
     outline: none;
     cursor: pointer; }
     .el-picker-panel__shortcut:hover {
-      color: #FFF; }
+      color: #606266; }
     .el-picker-panel__shortcut.active {
       background-color: #e6f1fe;
-      color: #FFF; }
+      color: #606266; }
   .el-picker-panel__btn {
     border: 1px solid #dcdcdc;
     color: #333;
@@ -1180,7 +1180,7 @@
     outline: none;
     margin-top: 8px; }
     .el-picker-panel__icon-btn:hover {
-      color: #FFF; }
+      color: #606266; }
     .el-picker-panel__icon-btn.is-disabled {
       color: #bbb; }
       .el-picker-panel__icon-btn.is-disabled:hover {
@@ -1249,9 +1249,9 @@
     cursor: pointer;
     color: #606266; }
     .el-date-picker__header-label:hover {
-      color: #FFF; }
+      color: #606266; }
     .el-date-picker__header-label.active {
-      color: #FFF; }
+      color: #606266; }
   .el-date-picker__prev-btn {
     float: left; }
   .el-date-picker__next-btn {
@@ -1905,7 +1905,7 @@
   line-height: 20px; }
 
 .time-select-item.selected:not(.disabled) {
-  color: #FFF;
+  color: #606266;
   font-weight: bold; }
 
 .time-select-item.disabled {
@@ -1913,6 +1913,6 @@
   cursor: not-allowed; }
 
 .time-select-item:hover {
-  background-color: #FFF;
+  background-color: #f2f2f2;
   font-weight: bold;
   cursor: pointer; }

@@ -647,12 +647,12 @@
   .el-button.is-round {
     padding: 12px 20px; }
   .el-button:hover, .el-button:focus {
-    color: #FFF;
-    border-color: white;
-    background-color: white; }
+    color: #606266;
+    border-color: #cfd0d1;
+    background-color: #efeff0; }
   .el-button:active {
-    color: #e6e6e6;
-    border-color: #e6e6e6;
+    color: #56585c;
+    border-color: #56585c;
     outline: none; }
   .el-button::-moz-focus-inner {
     border: 0; }
@@ -660,16 +660,16 @@
     margin-left: 5px; }
   .el-button.is-plain:hover, .el-button.is-plain:focus {
     background: #FFFFFF;
-    border-color: #FFF;
-    color: #FFF; }
+    border-color: #606266;
+    color: #606266; }
   .el-button.is-plain:active {
     background: #FFFFFF;
-    border-color: #e6e6e6;
-    color: #e6e6e6;
+    border-color: #56585c;
+    color: #56585c;
     outline: none; }
   .el-button.is-active {
-    color: #e6e6e6;
-    border-color: #e6e6e6; }
+    color: #56585c;
+    border-color: #56585c; }
   .el-button.is-disabled, .el-button.is-disabled:hover, .el-button.is-disabled:focus {
     color: #C0C4CC;
     cursor: not-allowed;
@@ -703,42 +703,42 @@
     padding: 12px; }
   .el-button--primary {
     color: #FFFFFF;
-    background-color: #FFF;
-    border-color: #FFF; }
+    background-color: #606266;
+    border-color: #606266; }
     .el-button--primary:hover, .el-button--primary:focus {
-      background: white;
-      border-color: white;
+      background: #808185;
+      border-color: #808185;
       color: #FFFFFF; }
     .el-button--primary:active {
-      background: #e6e6e6;
-      border-color: #e6e6e6;
+      background: #56585c;
+      border-color: #56585c;
       color: #FFFFFF;
       outline: none; }
     .el-button--primary.is-active {
-      background: #e6e6e6;
-      border-color: #e6e6e6;
+      background: #56585c;
+      border-color: #56585c;
       color: #FFFFFF; }
     .el-button--primary.is-disabled, .el-button--primary.is-disabled:hover, .el-button--primary.is-disabled:focus, .el-button--primary.is-disabled:active {
       color: #FFFFFF;
-      background-color: white;
-      border-color: white; }
+      background-color: #b0b1b3;
+      border-color: #b0b1b3; }
     .el-button--primary.is-plain {
-      color: #FFF;
-      background: white;
-      border-color: white; }
+      color: #606266;
+      background: #efeff0;
+      border-color: #bfc0c2; }
       .el-button--primary.is-plain:hover, .el-button--primary.is-plain:focus {
-        background: #FFF;
-        border-color: #FFF;
+        background: #606266;
+        border-color: #606266;
         color: #FFFFFF; }
       .el-button--primary.is-plain:active {
-        background: #e6e6e6;
-        border-color: #e6e6e6;
+        background: #56585c;
+        border-color: #56585c;
         color: #FFFFFF;
         outline: none; }
       .el-button--primary.is-plain.is-disabled, .el-button--primary.is-plain.is-disabled:hover, .el-button--primary.is-plain.is-disabled:focus, .el-button--primary.is-plain.is-disabled:active {
-        color: white;
-        background-color: white;
-        border-color: white; }
+        color: #a0a1a3;
+        background-color: #efeff0;
+        border-color: #dfe0e0; }
   .el-button--success {
     color: #FFFFFF;
     background-color: #67C23A;
@@ -917,16 +917,16 @@
       padding: 7px; }
   .el-button--text {
     border-color: transparent;
-    color: #FFF;
+    color: #606266;
     background: transparent;
     padding-left: 0;
     padding-right: 0; }
     .el-button--text:hover, .el-button--text:focus {
-      color: white;
+      color: #808185;
       border-color: transparent;
       background-color: transparent; }
     .el-button--text:active {
-      color: #e6e6e6;
+      color: #56585c;
       border-color: transparent;
       background-color: transparent; }
     .el-button--text.is-disabled, .el-button--text.is-disabled:hover, .el-button--text.is-disabled:focus {
@@ -1048,7 +1048,7 @@
     .el-calendar-table td.is-selected {
       background-color: #F2F8FE; }
     .el-calendar-table td.is-today {
-      color: #FFF; }
+      color: #606266; }
   .el-calendar-table tr:first-child td {
     border-top: 1px solid #EBEEF5; }
   .el-calendar-table tr td:first-child {

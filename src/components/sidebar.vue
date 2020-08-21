@@ -31,8 +31,11 @@
       <div class="placard">
         <h3 class="placard-title">公告</h3>
        <p class="introduce">
-        这里是worthworld的个人博客，记录前端所学；
+        hi！这里是好折腾worthworld的个人博客，记录前端所学；
         如果内容对你有帮助，欢迎点赞、评论、留言。
+      </p>
+      <p class="introduce">
+         经过一个月的折腾，本站点于2020.08.20上线了，文章内容还没更新，勿怪勿怪
       </p>
       </div>
       <div class="myInformation">

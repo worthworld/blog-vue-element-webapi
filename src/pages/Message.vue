@@ -61,7 +61,7 @@ export default {
         //后续改成 静态新增留言，不再访问浏览器刷新数据
         that.getMsg();
       } else {
-        this.showMessage("error", "服务器异常,留言失败");
+        this.showMessage("waring", ret.data.Info);
       }
     },
     //提示

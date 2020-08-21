@@ -31,7 +31,7 @@ button, input, select, textarea { font-size: 100%; } /* 使得表单元素在 ie
 /** 重置表格元素 **/
 table { border-collapse: collapse; border-spacing: 0; }
 /*基本样式*/
-html{font-size:28rpx;background-color: #f5f5f5; color: #333;}
+html{font-size:13px; color: #333;}
 div{box-sizing:border-box;}
 .font-color{color:#ed7720!important;}
 .bg-color{background-color:#e93323!important;}

@@ -282,7 +282,7 @@
       border-color: #C0C4CC; }
     .el-textarea__inner:focus {
       outline: none;
-      border-color: #FFF; }
+      border-color: #606266; }
   .el-textarea .el-input__count {
     color: #909399;
     background: #FFFFFF;
@@ -291,7 +291,7 @@
     bottom: 5px;
     right: 10px; }
   .el-textarea.is-disabled .el-textarea__inner {
-    background-color: #FFF;
+    background-color: #f2f2f2;
     border-color: #E4E7ED;
     color: #C0C4CC;
     cursor: not-allowed; }
@@ -382,7 +382,7 @@
       border-color: #C0C4CC; }
     .el-input__inner:focus {
       outline: none;
-      border-color: #FFF; }
+      border-color: #606266; }
   .el-input__suffix {
     position: absolute;
     height: 100%;
@@ -421,9 +421,9 @@
     pointer-events: none; }
   .el-input.is-active .el-input__inner {
     outline: none;
-    border-color: #FFF; }
+    border-color: #606266; }
   .el-input.is-disabled .el-input__inner {
-    background-color: #FFF;
+    background-color: #f2f2f2;
     border-color: #E4E7ED;
     color: #C0C4CC;
     cursor: not-allowed; }
@@ -477,7 +477,7 @@
     vertical-align: middle;
     display: table-cell; }
   .el-input-group__append, .el-input-group__prepend {
-    background-color: #FFF;
+    background-color: #f2f2f2;
     color: #909399;
     vertical-align: middle;
     display: table-cell;

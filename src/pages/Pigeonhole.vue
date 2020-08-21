@@ -60,7 +60,7 @@ export default {
       titleList: [],
       pageSize: 8,
       pageIndex: 1,
-      baseColor: "#81e6c4",
+      baseColor: "#5989b9",
     };
   },
   components: {

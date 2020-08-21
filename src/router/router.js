@@ -10,12 +10,10 @@ import PagesPigeonhole from '@/pages/Pigeonhole';
 import PagesBook from '@/pages/Book'
 import PagesMessage from '@/pages/Message';
 import PagesArticleDetails from '@/pages/ArticleDetails';
-
-import AdminIndex from '@/admin/Index';
-import AdminMain from '@/admin/Main'
 import Error404 from '@/views/Error'
 
 export default [
+  // views 测试用的
     {
         path:'/views',
         redirect:'/views/home',
@@ -117,35 +115,6 @@ export default [
       ]
     },
    
-  
-    
-    // 后台管理系统
-    {
-      path:'/admin',
-      component:AdminIndex,
-      beforeEnter:(to,from,next)=>{
-        if(localStorage.getItem('token'))
-        {
-          next()
-        }
-        else{
-          next({path:'Login'})
-        }
-      },
-      redirect:'/admin/index',
-      children:[
-        {
-          path:'main',
-          name:'admin-system',
-          component:AdminMain,
-          meta:{
-            title:'后台管理系统'
-          }
-        },
-  
-      ]
-    },
-  
   
     {
       path:'/',

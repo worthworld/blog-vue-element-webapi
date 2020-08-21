@@ -69,7 +69,7 @@ export default {
       messageList: [],
       navigation:true,
       preview:'preview',
-      previewBackground:'#f5f5f5'
+      previewBackground:'#fff'
     };
   },
   components: { publicMessage, loading},
@@ -126,7 +126,7 @@ export default {
         //后续改成 静态新增留言，不再访问浏览器刷新数据
         that.getBlogDetails();
       } else {
-        this.showMessage("error", "服务器异常,留言失败");
+        this.showMessage("waring", ret.data.Info);
       }
     },
     // 点赞
