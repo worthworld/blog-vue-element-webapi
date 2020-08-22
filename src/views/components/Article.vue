@@ -25,7 +25,7 @@
           >
           <!-- :to="{name:'views',params:{pages:'articles',id:0}}" -->
             <span>{{ item.createTime }}</span>
-            {{item.id+'_'+item.title }}
+            {{item.title }}
           </router-link>
         </ul>
       </article>

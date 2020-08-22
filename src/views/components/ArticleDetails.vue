@@ -187,11 +187,11 @@ export default {
     margin: auto;
     overflow: hidden;
     box-shadow: 5px 5px 20px #cccaca;
-    padding:30px 20px;
+    padding:30px 0;
     margin-bottom: 30px;
     @media screen and (max-width: 500px) {
       width: 100%;
-      padding:20px 10px;
+      padding:20px 0;
     }
   }
   .blog-title {
