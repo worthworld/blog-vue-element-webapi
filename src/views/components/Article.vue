@@ -2,16 +2,16 @@
   <div class="main-box">
     <main class="main flex-row row-center">
       <aside class="aside">
-        <sidebar
+        <blog-sidebar
           :dtList="blogList"
           @searchInput="getSearch"
           @selectTag="selectTag"
-          :searchColor="baseColor"
-        ></sidebar>
+          :searchColor="baseColor[stateId]"
+        ></blog-sidebar>
       </aside>
       <article class="article">
         <!-- showList.length==0&& -->
-        <loading class="load" v-if="showList.length == 0 && load"></loading>
+        <blog-loading class="load" v-if="load"></blog-loading>
         <ul v-if="showList.length > 0">
           <router-link
             class="blog-list"
@@ -21,10 +21,11 @@
               pageIndex * pageSize
             )"
             :key="item.id"
-            :to="{ name: 'article-details', params: { id: item.id } }"
+            :to="{ name:'views', params: {pages:'articledetails', id: item.id } }"
           >
+          <!-- :to="{name:'views',params:{pages:'articles',id:0}}" -->
             <span>{{ item.createTime }}</span>
-            {{ item.title }}
+            {{item.id+'_'+item.title }}
           </router-link>
         </ul>
       </article>
@@ -44,35 +45,29 @@
 </template>
 
 <script>
-import sidebar from "@/components/sidebar";
-import loading from "@/components/loading";
 let that = {};
 export default {
+  name:'artcle',
   data() {
     return {
       load: true,
-      params: { state: 0 },
-      // blogList:[{id:1,title:'初学前端',tagsID:'',date:'4-12'},{id:2,title:'牛刀小试',date:'4-12'}
-      // ,{id:3,title:'从入门到放弃',date:'4-16'}],
-      // showList:[{id:1,title:'初学前端',date:'4-12'},{id:2,title:'牛刀小试',date:'4-12'}
-      // ,{id:3,title:'从入门到放弃',date:'4-16'}],
       blogList: [],
       showList: [],
       titleList: [],
       pageSize: 8,
       pageIndex: 1,
-      baseColor: "#81e6c4",
+      baseColor: ["#81e6c4",'#409EFF'],
     };
   },
-  components: {
-    sidebar,
-    loading,
-  },
+  props:['stateId'],
   created() {
-    this.getGlogList();
+    that = this;
   },
   mounted() {
-    that = this;
+     this.getGlogList();
+  },
+  computed:{
+
   },
   watch: {
     showList(newVal) {
@@ -80,12 +75,17 @@ export default {
         this.showMessage("info", "没有找到数据");
       }
     },
+      '$route'(){
+        //兼容路由变化，刷新数据
+        this.getGlogList();
+      }
   },
   methods: {
     // 获取文章列表
     async getGlogList() {
+      let params={state:that.stateId}
       const res = await this.$https.get("GetArticles", {
-        params: this.params,
+         params
       });
       that.load = false;
       //  console.log('axios:'+JSON.stringify(res.data))
@@ -128,8 +128,8 @@ export default {
       } else {
         that.showList = that.blogList.filter((item) => {
           let arr = item.tagsID.split(",");
-          console.log(arr);
-          console.log(arr.indexOf(ret.toString()));
+          // console.log(arr);
+          // console.log(arr.indexOf(ret.toString()));
           return arr.indexOf(ret.toString()) != -1;
         });
       }

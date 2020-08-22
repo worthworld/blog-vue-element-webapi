@@ -9,8 +9,7 @@ import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import vueClapButton from "vue-clap-button";
 import "vue-clap-button/dist/vue-clap-button.js";
-// import '@/css/global.js'
-// import './components/registerCompontent.js'
+import './components/registerCompontent.js'
 Vue.use(vueClapButton)
 Vue.use(mavonEditor)
 Vue.config.productionTip = false

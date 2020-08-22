@@ -1,17 +1,15 @@
 <template>
   <div id="app">
-       <BackTop>
+       <blog-backtop>
       <template v-slot:main>
        <router-view />
          </template>
-         </BackTop>
+         </blog-backtop>
   </div>
 </template>
 <script>
-import BackTop from "@/components/element/backtop";
 export default {
   name: "app",
-  components:{BackTop},
   methods: {
   },
   created(){
@@ -29,10 +27,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
- #app{
-   width:100vw;
- }
- html{
-   background-color: #fff !important;
- }
 </style>

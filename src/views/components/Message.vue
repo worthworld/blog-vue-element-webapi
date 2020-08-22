@@ -1,15 +1,15 @@
 <template>
     <div class="app">
           <div>
-          <publicMessage :type="type" :messageList="messageList" @submitMsg="postMsg"></publicMessage>
+          <blog-publishmessage :type="type" :messageList="messageList" @submitMsg="postMsg"></blog-publishmessage>
         </div>
     </div>
 </template>
 
 <script>
-import publicMessage from '@/components/publicMessage'
 let that;
 export default {
+    name:'message',
     data(){
       return{
             type:'message',
@@ -20,7 +20,8 @@ export default {
         ]
       }
     },
-    components:{publicMessage},
+   props:['stateId'],
+    // components:{publicMessage},
     mounted(){
       that=this
       that.getMsg()
@@ -52,10 +53,8 @@ export default {
         type: "leave",
         articlesID: 0,
       };
-      let ret = await that.$https.post("addMessage", data, {
-        headers: {"Content-Type": "application/x-www-form-urlencoded;charset=utf-8;"},
-      });
-      console.log(JSON.stringify(ret.data));
+      let ret = await that.$https.post("addMessage", data);
+      // console.log(JSON.stringify(ret.data));
       if (ret.status == 200 && ret.data.Data) {
         this.showMessage("success", "留言成功");
         //后续改成 静态新增留言，不再访问浏览器刷新数据
@@ -75,7 +74,6 @@ export default {
     }
 }
 </script>
-import moduleName from '@/components/publicMessage';
 <style lang="less" scoped>
   .app{
   // padding: 10px 70px 0;

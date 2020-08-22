@@ -1,7 +1,7 @@
 <template>
   <div class="app">
         <div class="main">
-          <loading class="load" v-if="load"></loading>
+          <blog-loading class="load" v-if="load"></blog-loading>
           <div class="message-content" v-if="details">
             <div class="blog-title">
               <h1>{{ details.title }}</h1>
@@ -43,18 +43,16 @@
             </div>
           </div>
           <footer>
-            <publicMessage
+            <blog-publishmessage
               :type="type"
               :messageList="messageList"
               @submitMsg="postMsg"
-            ></publicMessage>
+            ></blog-publishmessage>
           </footer>
         </div>
   </div>
 </template>
 <script>
-import publicMessage from "@/components/publicMessage";
-import loading from "@/components/loading";
 import * as storage from "@/utils/storage"
 let Local=storage.Local
 let that = {};
@@ -72,7 +70,6 @@ export default {
       previewBackground:'#fff'
     };
   },
-  components: { publicMessage, loading},
   created(){
      that = this;
      that.getBlogDetails();
@@ -81,16 +78,15 @@ export default {
     setTimeout(() => {
          that.isClicked=that.getLikeStatus() 
         that.flag=true
-         console.log('初始化clicked:'+that.isClicked)
     }, 500);
  
   },
-  props: ["id"],
+  props: ["stateId"],
   methods: {
     // 获取博客
     async getBlogDetails() {
       const res = await that.$https.get("GetArticleDetails", {
-        params: { id: that.id },
+        params: { id: that.stateId },
       });
       that.load = false;
       // console.log("axios:" + JSON.stringify(res.data));
@@ -117,7 +113,7 @@ export default {
         createTime: null,
         contents: msg,
         type: "comment",
-        articlesID: that.id,
+        articlesID: that.stateId,
       };
       let ret = await that.$https.post("addMessage", data);
       // console.log(JSON.stringify(ret.data));
@@ -132,7 +128,7 @@ export default {
     // 点赞
     async mylike(type) {
         // console.log('点赞')
-        let data={ id: that.id,type:type }
+        let data={ id: that.stateId,type:type }
         const res = await that.$https.post("likes", data);
       if (res.status === 200) {
         if (res.data.StatusCode === 0 && res.data.Data) {
@@ -146,18 +142,18 @@ export default {
     },
        //查看是否有点赞
      getLikeStatus(){
-       let key='mylike_'+that.id
+       let key='mylike_'+that.stateId
        let mylike=Local.get(key)
       //  console.log('storage:',mylike)
        return !!mylike
      },
     // 由于没有游客的功能，点赞使用localStorage
     setMyLikes(type){
-     let key='mylike_'+that.id
+     let key='mylike_'+that.stateId
       // console.log('type:',type)
       if(type==='add'){
         // console.log('add:',type)
-        Local.set(key,that.id)
+        Local.set(key,that.stateId)
         that.details['likes']=that.details['likes']+1
       }
       else{

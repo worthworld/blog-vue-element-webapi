@@ -4,11 +4,11 @@
      
     <main class="main flex-row row-center row-top">
         <aside class="aside">
-         <sidebar  :dtList="blogList" @searchInput="getSearch" :searchColor="baseColor"></sidebar>
+         <blog-sidebar  :dtList="blogList" @searchInput="getSearch" :searchColor="baseColor"></blog-sidebar>
     
         </aside>
         <article class="article">
-               <loading class="load" v-if="load"></loading>
+               <blog-loading class="load" v-if="load"></blog-loading>
         <ul v-if="showList.length>0">
           <a :href="item.url" target="_blank" :key="item.id"
           v-for="item in showList.slice((pageIndex-1)*pageSize,pageIndex*pageSize)" >
@@ -29,8 +29,6 @@
 </template>
 
 <script>
-import sidebar from '@/components/sidebar'
-import loading from '@/components/loading'
 let that={}
 export default {
     data(){
@@ -44,9 +42,7 @@ export default {
             baseColor:'#E6A23C'
         }
     },
-    components:{
-     sidebar,loading 
-    },
+      props:['stateId'],
     mounted(){
       that=this
       that.getGlogList()

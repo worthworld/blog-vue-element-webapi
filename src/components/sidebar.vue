@@ -94,9 +94,14 @@ export default {
     },
     searchColor: { type: String, default: "#409EFF" },
   },
+  watch:{
+     '$route'(){
+        //监听路由变化，刷新数据
+        this.inputStyle={border: "1px solid " + this.searchColor}
+        this.submitStyle={backgroundColor: this.searchColor}
+      }
+  },
   mounted() {
-    console.log("searchColor:" + JSON.stringify(this.searchColor));
-    //  console.log('dtList:'+JSON.stringify(this.dtList))
   },
   methods: {
     submit() {
